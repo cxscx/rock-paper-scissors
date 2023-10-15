@@ -2,22 +2,23 @@
 // get player to make a choice
 // see which one wins
 
+let choices = ["rock", "paper", "scissors"];
+
 function getComputerChoice() {
-    let choices = ["rock", "paper", "scissors"]
-    let computerChoice = choices[Math.floor(Math.random() * choices.length)]; 
-    console.log(computerChoice);
+   let computerChoice = choices[Math.floor(Math.random() * choices.length)]; 
+   return computerChoice;
 }
 
 function getPlayerChoice() {
-    let choice = prompt("Choose rock, paper or scissors")
-    let playerChoice = choice.toLowerCase()
-    console.log(playerChoice);
+    let choice = prompt("Choose rock, paper or scissors");
+    let playerChoice = choice.toLowerCase();
+    return playerChoice;
 }
 
 const computerSelection = getComputerChoice();
 const playerSelection = getPlayerChoice()
 
-function playRound (playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     if (playerSelection === "rock" && computerSelection === "scissors") {
         return("You Win! Rock beats Scissors.");
     } else if (playerSelection === "paper" && computerSelection === "rock") {
@@ -30,4 +31,8 @@ function playRound (playerSelection, computerSelection) {
         return (`You Lose! ${computerSelection} beats ${playerSelection}`);
     }
 }
-// issues is that computerSelection isn't defined, and should make each round run playerSelection
+
+console.log(playRound(playerSelection, computerSelection));
+
+
+
