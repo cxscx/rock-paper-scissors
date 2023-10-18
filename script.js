@@ -2,10 +2,6 @@
 // get player to make a choice
 // see which one wins
 
-const choices = ["rock", "paper", "scissors"];
-let playerScore = 0;
-let computerScore = 0;
-
 function getComputerChoice() {
    let computerChoice = choices[Math.floor(Math.random() * choices.length)]; 
    return computerChoice;
@@ -20,10 +16,13 @@ function getPlayerChoice() {
 const computerSelection = getComputerChoice();
 const playerSelection = getPlayerChoice()
 
-
-function playRound(playerSelection, computerSelection) {
-    if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "rock")) {
-        return (`You Win! ${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection[0].toUpperCase() + computerSelection.slice(1)}.`);
+function playRound (playerSelection, computerSelection) {
+    if (playerSelection === "rock" && computerSelection === "scissors") {
+        return("You Win! Rock beats Scissors.");
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+        return("You Win! Paper beats Rock.");
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        return ("You Win! Scissors beats Paper.");
     } else if (playerSelection === computerSelection) {
         return ("A Tie");
     } else {
@@ -44,9 +43,4 @@ function game() {
         return(`Your score has remained unchanged. Your score is ${playerScore} VS ${computerScore}.`)
     }
 }
-
-// play round
-// if player wins +1 to player score
-// if computer wins +1 to computer score
-
-
+// issues is that computerSelection isn't defined, and should make each round run playerSelection
