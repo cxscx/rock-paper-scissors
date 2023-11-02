@@ -3,17 +3,17 @@
 // see which one wins
 
 const choices = ["rock", "paper", "scissors"];
-let playerScore = 0;
-let computerScore = 0;
 
 function getComputerChoice() {
    let computerChoice = choices[Math.floor(Math.random() * choices.length)]; 
+   console.log(computerChoice);
    return computerChoice;
 }
 
 function getPlayerChoice() {
     let choice = prompt("Choose rock, paper or scissors");
     let playerChoice = choice.toLowerCase();
+    console.log(playerChoice);
     return playerChoice;
 }
 
@@ -22,45 +22,54 @@ let playerSelection = getPlayerChoice()
 
 
 function checkWinner(playerSelection, computerSelection) {
-    if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "rock")) {
-        return (`You Win! ${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection[0].toUpperCase() + computerSelection.slice(1)}.`);
+    if ((playerSelection === "rock" && computerSelection === "scissors") || 
+    (playerSelection === "paper" && computerSelection === "rock") || 
+    (playerSelection === "scissors" && computerSelection === "rock")) {
+        return "Player!";
     } else if (playerSelection === computerSelection) {
-        return ("A Tie");
+        return "A Tie";
     } else {
-        return (`You Lose! ${playerSelection[0].toUpperCase() + playerSelection.slice(1) } loses to ${computerSelection[0].toUpperCase() + computerSelection.slice(1)}. `);
+        return "Computer!";
     }
-    
+
 }
 
 console.log(checkWinner(playerSelection, computerSelection));
 
-function playRound() {
-    var roundResult = (checkWinner(playerSelection, computerSelection));
-    if (roundResult.search("You Win!") > -1){
-        playerScore++;
-        return(`Your score is now ${playerScore} VS ${computerScore}.`);
-    } else if (roundResult.search("You Lose!") > -1) {
-        computerScore++;
-        return(`Your score is now ${playerScore} VS ${computerScore}.`)
+function playRound(playerSelection,computerSelection) {
+    const roundResult = (checkWinner(playerSelection, computerSelection));
+    if (roundResult === "Player!"){
+        return `You win this round! ${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection[0].toUpperCase() + computerSelection.slice(1)}.`;
+    } else if (roundResult === "Computer!") {
+        return `You lost this round :(. ${playerSelection[0].toUpperCase() + playerSelection.slice(1) } loses to ${computerSelection[0].toUpperCase() + computerSelection.slice(1)}.`;
     } else {
-        return(`Your score has remained unchanged. Your score is ${playerScore} VS ${computerScore}.`);
+        return "A Tie!";
     }
 }
 
+
 function game() {
+    let playerScore = 0;
+    let computerScore = 0;
     console.log("Welcome, please make a choice")
     for (let i = 0; i < 5; i++) {
-        getComputerChoice()
-        getPlayerChoice()
-        checkWinner()
-        playRound()
+        const playerSelection = getPlayerChoice()
+        const computerSelection = getComputerChoice()
+        console.log(playRound(playerSelection, computerSelection));
+        if (checkWinner === "Player!") {
+            playerScore++;
+            console.log(`Your score is now ${playerScore} VS ${computerScore}.`);
+        } else if (checkWinner === "Computer!") {
+            computerScore++;
+            console.log(`Your score is now ${playerScore} VS ${computerScore}.`);
+        }
     }
     if (playerScore > computerScore) {
-        return (`Congratulations! You Won! The score was ${playerScore} VS ${computerScore}`)
+        console.log(`Congratulations! You Won! The score was ${playerScore} VS ${computerScore}`)
     } else if (playerScore < computerScore) {
-        return (`You Lost! Better luck next time. Your score was ${playerScore} VS ${computerScore}`)
+        console.log(`You Lost! Better luck next time. Your score was ${playerScore} VS ${computerScore}`)
     } else {
-        return("We have a Tie!")
+        console.log("We have a Tie!")
     }
 }
 // play round
