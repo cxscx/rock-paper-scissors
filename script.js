@@ -20,8 +20,6 @@ function getPlayerChoice() {
     return playerChoice;
 }
 
-let computerSelection = getComputerChoice();
-let playerSelection = getPlayerChoice();
 
 function checkWinner(playerSelection, computerSelection) {
     if ((playerSelection === "rock" && computerSelection === "scissors") || 
