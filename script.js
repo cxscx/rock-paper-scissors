@@ -4,6 +4,8 @@
 
 const choices = ["rock", "paper", "scissors"];
 
+let computerScore = 0;
+let playerScore = 0;
 
 function getComputerChoice() {
    let computerChoice = choices[Math.floor(Math.random() * choices.length)]; 
@@ -19,9 +21,7 @@ function getPlayerChoice() {
 }
 
 let computerSelection = getComputerChoice();
-let playerSelection = getPlayerChoice()
-let computerScore = 0
-let playerScore = 0
+let playerSelection = getPlayerChoice();
 
 function checkWinner(playerSelection, computerSelection) {
     if ((playerSelection === "rock" && computerSelection === "scissors") || 
@@ -33,7 +33,6 @@ function checkWinner(playerSelection, computerSelection) {
     } else {
         return "Computer Wins!";
     }
-
 }
 
 function playRound(playerSelection,computerSelection) {
@@ -47,10 +46,10 @@ function playRound(playerSelection,computerSelection) {
     }
 }
 
-
 function game() {
     console.log("Welcome, please make a choice.")
     for (let i = 0; i < 5; i++) {
+        console.log("* * * * * * * * * * * * * * * * * * *")
         const playerSelection = getPlayerChoice()
         const computerSelection = getComputerChoice()
         console.log(playRound(playerSelection, computerSelection));
@@ -63,8 +62,8 @@ function game() {
         } else {
             console.log (`Your score remains unchanged. It is ${playerScore} VS ${computerScore}.`);
         }
-        console.log("* * * * * * * * * * * * * * * * * * *")
     }
+    console.log("* * * * * * * * * * * * * * * * * * *")
     if (playerScore > computerScore) {
         console.log(`Congratulations! You Won! The score was ${playerScore} VS ${computerScore}.`)
     } else if (playerScore < computerScore) {
@@ -73,6 +72,9 @@ function game() {
         console.log(`We have a Tie! The score was ${playerScore} VS ${computerScore}.`)
     }
 }
+
+game()
+
 // play round
 // if player wins +1 to player score
-// if computer wins +1 to computer score
+// if computer wins +1 to computer score 
