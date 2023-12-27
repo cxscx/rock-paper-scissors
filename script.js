@@ -3,9 +3,9 @@ let playerScore = 0;
 let playerSelection;
 const choices = ["rock", "paper", "scissors"];
 const readyToPlay = document.getElementById('player-choices')
-const btnRock = document.getElementById('rock');
-const btnPaper = document.getElementById('paper');
-const btnScissors = document.getElementById('scissors');
+const btnRock = document.getElementById('player-rock');
+const btnPaper = document.getElementById('player-paper');
+const btnScissors = document.getElementById('player-scissors');
 const computerChoice = document.getElementById('computer-choice')
 const playerChoice = document.getElementsByClassName('player-choices')
 
@@ -47,6 +47,7 @@ function checkWinner(playerSelection, computerSelection) {
         document.getElementById('result').innerHTML = "You Lose!"
     }
 }
+
 
 
 // function checkWinner(playerSelection, computerSelection) {
