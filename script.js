@@ -1,8 +1,7 @@
 let computerScore = 0;
 let playerScore = 0;
-let playerSelection 
-const choices = ["rock", "paper", "scissors"]
-const computerSelection =  getComputerChoice()
+let playerSelection;
+const choices = ["rock", "paper", "scissors"];
 const readyToPlay = document.getElementById('player-choices')
 const btnRock = document.getElementById('rock');
 const btnPaper = document.getElementById('paper');
@@ -10,34 +9,32 @@ const btnScissors = document.getElementById('scissors');
 const computerChoice = document.getElementById('computer-choice')
 const playerChoice = document.getElementsByClassName('player-choices')
 
-
 btnRock.addEventListener("click", () => {
-    getComputerChoice()
+    const computerSelection = getComputerChoice();
     playerSelection = choices[0]
     console.log("Player chooses rock");
-    console.log(checkWinner(playerSelection, computerSelection))
+    checkWinner(playerSelection, computerSelection);
 });
 
 btnPaper.addEventListener('click', () => {
-    getComputerChoice()
+    const computerSelection = getComputerChoice();
     playerSelection = choices[1]
     console.log("Player chooses paper");
-    console.log(checkWinner(playerSelection, computerSelection));
+    checkWinner(playerSelection, computerSelection);
 });
 
 btnScissors.addEventListener('click', () => {
-    getComputerChoice()
+    const computerSelection = getComputerChoice();
     playerSelection = choices[2]
     console.log("Player chooses scissors");
-    console.log(checkWinner(playerSelection, computerSelection));
+    checkWinner(playerSelection, computerSelection);
 })
 
-
 function getComputerChoice() {
-   let computerChoice = choices[Math.floor(Math.random() * choices.length)]; 
-   document.getElementById('computer-choice').innerHTML = `Computer chose ${computerChoice}.`;
-   return computerChoice;
-}
+    let computerChoice = choices[Math.floor(Math.random() * choices.length)]; 
+    document.getElementById('computer-choice').innerHTML = `Computer chose ${computerChoice}.`;
+    return computerChoice;
+ };
 
 function checkWinner(playerSelection, computerSelection) {
     if ((playerSelection === choices[0] && computerSelection === choices[2]) ||
@@ -50,6 +47,7 @@ function checkWinner(playerSelection, computerSelection) {
         document.getElementById('result').innerHTML = "You Lose!"
     }
 }
+
 
 // function checkWinner(playerSelection, computerSelection) {
 //     getComputerChoice()
@@ -64,16 +62,16 @@ function checkWinner(playerSelection, computerSelection) {
 //     }
 // }
 
-function playRound(playerSelection,computerSelection) {
-    const roundResult = (checkWinner(playerSelection, computerSelection));
-    if (roundResult === "Player Wins!"){
-        return `You win this round! ${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection[0].toUpperCase() + computerSelection.slice(1)}.`;
-    } else if (roundResult === "Computer Wins!") {
-        return `You lost this round :(. ${playerSelection[0].toUpperCase() + playerSelection.slice(1) } loses to ${computerSelection[0].toUpperCase() + computerSelection.slice(1)}.`;
-    } else {
-        return "A Tie!";
-    }
-}
+// function playRound(playerSelection,computerSelection) {
+//     const roundResult = (checkWinner(playerSelection, computerSelection));
+//     if (roundResult === "Player Wins!"){
+//         return `You win this round! ${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection[0].toUpperCase() + computerSelection.slice(1)}.`;
+//     } else if (roundResult === "Computer Wins!") {
+//         return `You lost this round :(. ${playerSelection[0].toUpperCase() + playerSelection.slice(1) } loses to ${computerSelection[0].toUpperCase() + computerSelection.slice(1)}.`;
+//     } else {
+//         return "A Tie!";
+//     }
+// }
 
 
 // function game() {
