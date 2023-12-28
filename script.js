@@ -1,6 +1,6 @@
+let playerSelection;
 let computerScore = 0;
 let playerScore = 0;
-let playerSelection;
 const choices = ["rock", "paper", "scissors"];
 const readyToPlay = document.getElementById('player-choices')
 const btnRock = document.getElementById('player-rock');
@@ -8,6 +8,7 @@ const btnPaper = document.getElementById('player-paper');
 const btnScissors = document.getElementById('player-scissors');
 const computerChoice = document.getElementById('computer-choice')
 const playerChoice = document.getElementsByClassName('player-choices')
+
 
 btnRock.addEventListener("click", () => {
     const computerSelection = getComputerChoice();
@@ -41,14 +42,24 @@ function checkWinner(playerSelection, computerSelection) {
     (playerSelection === choices[1] && computerSelection === choices[0])||
     (playerSelection === choices[2] && computerSelection === choices[1])){
         document.getElementById('result').innerHTML = "You Win!";
+        playerScore++
+        document.getElementById('player-score').innerHTML = `${playerScore}`;
     } else if (playerSelection === computerSelection) {
-        document.getElementById('result').innerHTML = "A Tie!"
+        document.getElementById('result').innerHTML = "A Tie!";
     } else {
-        document.getElementById('result').innerHTML = "You Lose!"
+        document.getElementById('result').innerHTML = "You Lose!";
+        computerScore++
+        document.getElementById('computer-score').innerHTML = `${computerScore}`;
     }
 }
 
-
+// function updateScore(checkWinner){
+//     if(checkWinner === "Player") {
+//         playerScore++
+//     } else if (checkWinner === "Computer"){
+//         computerScore++
+//     }
+// }
 
 // function checkWinner(playerSelection, computerSelection) {
 //     getComputerChoice()

@@ -6,11 +6,25 @@ body{
     color:rgb(0, 68, 204);
     text-align:center;
 }
+
+.score{
+    font-size:x-large;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+}
+
+#player-score,
+#computer-score{
+    margin-right:75px;
+    margin-left:75px;
+}
+
 .choices-section{
     display:flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content:space-around;
 }
 
 .player-choices{
@@ -21,11 +35,13 @@ body{
 
 .player-choices button{
     margin:17px; 
+    background-color:white;
+    border:none;
+    border-radius: 10px;
 }
-
 
 
 .player-choices img {
     background-color:blanchedalmond;
-    max-height: 150px;
+    max-height: 200px;
 }
